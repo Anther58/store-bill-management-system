@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>店铺报销账单管理系统</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+
+</head>
+
+<body>
+    <div class="layout">
+
+    <!-- 左侧菜单 -->
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                📒
+            </div>
+
+            <div class="logo-title">
+                <div>1022店铺报销</div>
+                <div>管理系统</div>
+            </div>
+
+        </div>
+
+        <ul class="menu">
+
+            <li class="active">
+                <i class="fa-solid fa-house"></i>
+                <span>首页概览</span>
+            </li>
+
+            <li>
+                <i class="fa-solid fa-wallet"></i>
+                <span>账单管理</span>
+            </li>
+
+            <li>
+                <i class="fa-solid fa-plus"></i>
+                <span>新增账单</span>
+            </li>
+
+            <li>
+                <i class="fa-solid fa-chart-column"></i>
+                <span>数据统计</span>
+            </li>
+
+            <li>
+                <i class="fa-solid fa-file-excel"></i>
+                <span>导出Excel</span>
+            </li>
+
+            <li>
+                <i class="fa-solid fa-user"></i>
+                <span>个人中心</span>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- 主区域 -->
+    <main class="main">
+
+
+ 
+
+    <!-- 顶部导航 -->
+<header class="header">
+
+    <div class="header-left">
+
+        <div class="menu-btn">
+            ☰
+        </div>
+
+        <div class="page-name">
+        1022 店铺报销账单管理系统
+        </div>
+
+    </div>
+
+    <div class="header-right">
+
+        <span class="welcome">
+            欢迎，
+        </span>
+
+        <span id="username"></span>
+
+        <img class="top-avatar"src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+
+        <button
+            class="logout-btn"
+            onclick="logout()">
+
+            退出登录
+
+        </button>
+
+    </div>
+
+</header>
+
+
+
+
+    <!-- 数据统计 -->
+
+    <div class="statistics">
+
+        <div class="stat-card income-card">
+
+            <div class="title">
+
+                总收入
+
+            </div>
+
+            <div class="money">
+
+                ￥<span id="income">0.00</span>
+
+            </div>
+
+        </div>
+
+        <div class="stat-card expense-card">
+
+            <div class="title">
+
+                总支出
+
+            </div>
+
+            <div class="money">
+
+                ￥<span id="expense">0.00</span>
+
+            </div>
+
+        </div>
+
+        <div class="stat-card balance-card">
+
+            <div class="title">
+
+                当前余额
+
+            </div>
+
+            <div class="money">
+
+                ￥<span id="balance">0.00</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="chart-box">
+
+    <div class="card chart-card">
+
+        <h2>📊 每月收入统计</h2>
+
+        <div id="incomeChart"></div>
+
+    </div>
+
+    <div class="card chart-card">
+
+        <h2>🥧 收支占比</h2>
+
+        <div id="typeChart"></div>
+
+    </div>
+
+</div>
+
+    
+
+
+
+
+    <!-- 新增账单 -->
+
+    <div class="card">
+
+        <h2>
+
+            新增账单
+
+        </h2>
+
+        <div class="form">
+
+    <div class="form-row">
+
+        <div class="form-item">
+
+            <label>人员</label>
+
+            <input
+                id="person"
+                type="text"
+                placeholder="请输入人员姓名">
+
+        </div>
+
+        <div class="form-item">
+
+            <label>金额</label>
+
+            <input
+                id="money"
+                type="number"
+                placeholder="请输入金额">
+
+        </div>
+
+    </div>
+
+
+    <div class="form-row">
+
+        <div class="form-item">
+
+            <label>类型</label>
+
+            <select id="type">
+
+                <option value="收入">
+
+                    收入
+
+                </option>
+
+                <option value="支出">
+
+                    支出
+
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-item">
+
+            <label>备注</label>
+
+            <input
+                id="remark"
+                type="text"
+                placeholder="请输入备注">
+
+        </div>
+
+    </div>
+
+
+    <div class="button-area">
+
+        <button
+            class="add-btn"
+            onclick="addBill()">
+
+            ➕ 添加账单
+
+        </button>
+
+    </div>
+
+</div>
+
+</div>
+
+
+<!-- 搜索区域 -->
+
+<div class="card">
+
+    <h2>
+
+        搜索账单
+
+    </h2>
+
+    <div class="search-box">
+
+        <input
+
+            id="search"
+
+            placeholder="请输入人员姓名">
+
+        <button
+            onclick="searchBill()">
+
+            🔍 搜索
+
+        </button>
+
+        <button
+            onclick="loadBills()">
+
+            📄 显示全部
+
+        </button>
+
+        <button
+            onclick="loadBills()">
+
+            🔄 刷新
+
+        </button>
+
+        <button class="btn" onclick="exportExcel()">
+    📥 导出Excel
+</button>
+
+    </div>
+
+</div>
+
+
+<!-- 账单列表 -->
+
+<div class="card">
+
+    <h2>
+
+        账单列表
+
+    </h2>
+
+    <table>
+
+        <thead>
+
+        <tr>
+
+            <th>人员</th>
+
+            <th>金额</th>
+
+            <th>类型</th>
+
+            <th>备注</th>
+
+            <th>时间</th>
+
+            <th>操作</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody id="list">
+
+        </tbody>
+
+    </table>
+    <div class="page-box">
+
+    <button id="prevBtn" onclick="prevPage()">
+        上一页
+    </button>
+
+    <span id="pageInfo">
+        第1页
+    </span>
+
+    <button id="nextBtn" onclick="nextPage()">
+        下一页
+    </button>
+
+</div>
+
+</div>
+<!-- 编辑账单弹窗 -->
+
+<div id="editModal" class="modal">
+
+    <div class="modal-content">
+
+        <h2>
+
+            编辑账单
+
+        </h2>
+
+        <div class="form">
+
+            <div class="form-item">
+
+                <label>人员</label>
+
+                <input
+                    id="editPerson"
+                    type="text">
+
+            </div>
+
+            <div class="form-item">
+
+                <label>金额</label>
+
+                <input
+                    id="editMoney"
+                    type="number">
+
+            </div>
+
+            <div class="form-item">
+
+                <label>类型</label>
+
+                <select id="editType">
+
+                    <option value="收入">
+
+                        收入
+
+                    </option>
+
+                    <option value="支出">
+
+                        支出
+
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="form-item">
+
+                <label>备注</label>
+
+                <input
+                    id="editRemark"
+                    type="text">
+
+            </div>
+
+        </div>
+
+        <div class="modal-btn">
+
+            <button
+                class="save-btn"
+                onclick="saveEdit()">
+
+                💾 保存修改
+
+            </button>
+
+            <button
+                class="cancel-btn"
+                onclick="closeEdit()">
+
+                取消
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+
+<script src="app.js"></script>
+
+</main>
+
+</div>
+
+</body>
+
+</html>
+

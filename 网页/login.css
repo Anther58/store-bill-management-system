@@ -1,0 +1,353 @@
+/* ===========================
+   全局
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    font-family:"Microsoft YaHei",sans-serif;
+
+    background:linear-gradient(
+        -45deg,
+        #4facfe,
+        #00c6ff,
+        #667eea,
+        #764ba2
+    );
+
+    background-size:400% 400%;
+
+    animation:bgMove 12s ease infinite;
+
+}
+
+/* 动态背景 */
+
+@keyframes bgMove{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+
+}
+
+/* ===========================
+   漂浮圆形装饰
+=========================== */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    width:320px;
+
+    height:320px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.12);
+
+    top:-120px;
+
+    left:-120px;
+
+}
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    width:260px;
+
+    height:260px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    right:-80px;
+
+    bottom:-80px;
+
+}
+
+/* ===========================
+   登录框
+=========================== */
+
+.login-box{
+
+    width:420px;
+
+    padding:40px;
+
+    border-radius:24px;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.25);
+
+    animation:showBox .8s ease;
+
+}
+
+/* 登录框出现动画 */
+
+@keyframes showBox{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ===========================
+   头像
+=========================== */
+
+.login-box img{
+
+    width:95px;
+
+    height:95px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    display:block;
+
+    margin:0 auto 20px;
+
+}
+
+/* ===========================
+   标题
+=========================== */
+
+.login-box h1{
+
+    text-align:center;
+
+    color:white;
+
+    font-size:38px;
+
+    line-height:52px;
+
+    margin-bottom:15px;
+
+}
+
+.login-box p{
+
+    text-align:center;
+
+    color:rgba(255,255,255,.85);
+
+    margin-bottom:30px;
+
+    font-size:18px;
+
+}
+
+/* ===========================
+   输入框
+=========================== */
+
+.login-box input{
+
+    width:100%;
+
+    height:52px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:12px;
+
+    margin-bottom:18px;
+
+    padding:0 18px;
+
+    font-size:16px;
+
+    background:rgba(255,255,255,.92);
+
+    transition:.3s;
+
+}
+
+.login-box input:focus{
+
+    background:white;
+
+    box-shadow:
+        0 0 12px rgba(64,158,255,.35);
+
+    transform:translateY(-2px);
+
+}
+
+.login-box input::placeholder{
+
+    color:#999;
+
+}
+
+/* ===========================
+   按钮
+=========================== */
+
+.login-box button{
+
+    width:100%;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:12px;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+/* 登录按钮 */
+
+.login-box button:nth-of-type(1){
+
+    background:linear-gradient(
+        135deg,
+        #409EFF,
+        #2b7de9
+    );
+
+    margin-top:8px;
+
+}
+
+/* 注册按钮 */
+
+.login-box button:nth-of-type(2){
+
+    background:linear-gradient(
+        135deg,
+        #67C23A,
+        #4CAF50
+    );
+
+    margin-top:15px;
+
+}
+
+.login-box button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 10px 20px rgba(0,0,0,.18);
+
+}
+
+/* ===========================
+   顶部光效
+=========================== */
+
+.login-box{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.login-box::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-120px;
+
+    left:-120px;
+
+    width:260px;
+
+    height:260px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.12);
+
+}
+
+/* ===========================
+   头像动画
+=========================== */
+
+.login-box img{
+
+    transition:.35s;
+
+}
+
+.login-box img:hover{
+
+    transform:rotate(8deg) scale(1.08);
+
+}
+
