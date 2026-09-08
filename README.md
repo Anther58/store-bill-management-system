@@ -73,8 +73,11 @@ GitHub
 ---
 
 ## 项目截图
-
+登录和注册界面
 <img width="1912" height="908" alt="image" src="https://github.com/user-attachments/assets/437055a3-21de-41b3-bc71-48eb54e2f90b" />
+<img width="1905" height="913" alt="image" src="https://github.com/user-attachments/assets/f2cb4a6d-8658-4f36-adbf-33f68df36d08" />
+主页面
+<img width="1916" height="902" alt="image" src="https://github.com/user-attachments/assets/09a3263e-a92f-4de6-a007-ab4c3b6d1226" />
 
 
 ---
